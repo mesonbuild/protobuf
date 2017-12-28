@@ -2,7 +2,8 @@ project('protobuf', 'cpp', version : '3.3.1', license : 'protobuf')
 
 cc = meson.get_compiler('cpp')
 
-flags = [ '-DHAVE_PTHREAD', '-Wno-sign-compare' ]
+flags = [ '-DHAVE_PTHREAD', '-Wno-sign-compare',
+          '-Wno-unused-parameter', '-Wno-ignored-qualifiers' ]
 deps = dependency('threads')
 
 libprotobuf_lite_src = [
@@ -224,5 +225,6 @@ protoc_dep = declare_dependency(link_with: [libprotobuf_lite, libprotobuf, libpr
 protoc_src = [ 'src/google/protobuf/compiler/main.cc' ]
 protoc = executable('protoc',
                     protoc_src,
+                    cpp_args: flags,
                     include_directories: include_directories('src'),
                     link_with: [libprotobuf_lite, libprotoc])
