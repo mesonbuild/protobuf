@@ -1,4 +1,4 @@
-project('protobuf', 'cpp', version : '3.3.1', license : 'protobuf')
+project('protobuf', 'cpp', version : '3.5.0', license : 'protobuf')
 
 cc = meson.get_compiler('cpp')
 
