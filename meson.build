@@ -2,8 +2,9 @@ project('protobuf', 'cpp', version : '3.5.1', license : 'protobuf')
 
 cc = meson.get_compiler('cpp')
 
-flags = [ '-DHAVE_PTHREAD', '-Wno-sign-compare',
-          '-Wno-unused-parameter', '-Wno-ignored-qualifiers' ]
+flags = cc.get_supported_arguments([ '-DHAVE_PTHREAD', '-Wno-sign-compare',
+                                     '-Wno-unused-parameter', '-Wno-ignored-qualifiers',
+                                     '/wd4146', '/wd4244', '/wd4305', '/wd4506' ])
 deps = dependency('threads')
 
 libprotobuf_lite_src = [
@@ -12,6 +13,7 @@ libprotobuf_lite_src = [
   'src/google/protobuf/stubs/bytestream.cc',
   'src/google/protobuf/stubs/common.cc',
   'src/google/protobuf/stubs/int128.cc',
+  'src/google/protobuf/stubs/io_win32.cc',
   'src/google/protobuf/stubs/once.cc',
   'src/google/protobuf/stubs/status.cc',
   'src/google/protobuf/stubs/statusor.cc',
