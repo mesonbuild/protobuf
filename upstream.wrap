@@ -1,0 +1,6 @@
+[wrap-file]
+directory = protobuf-3.11.4
+
+source_url = https://github.com/protocolbuffers/protobuf/releases/download/v3.11.4/protobuf-all-3.11.4.tar.gz
+source_filename = protobuf-all-3.11.4.tar.gz
+source_hash = 95a5af2fbddfaad6ef8f606eb8053ccf2f481174bd54c26373a8c49b328485a4
