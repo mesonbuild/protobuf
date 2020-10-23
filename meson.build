@@ -238,6 +238,7 @@ if meson.is_cross_build()
     native: true,
     cpp_args: flags,
     include_directories: include_directories('src'),
+    dependencies: dependency('threads', native: true),
   )
   protoc_gen = generator(protoc_native,
     output: ['@BASENAME@.pb.cc', '@BASENAME@.pb.h'],
