@@ -240,13 +240,11 @@ if meson.is_cross_build()
     include_directories: include_directories('src'),
     dependencies: dependency('threads', native: true),
   )
-  protoc_gen = generator(protoc_native,
-    output: ['@BASENAME@.pb.cc', '@BASENAME@.pb.h'],
-    arguments: ['@EXTRA_ARGS@', '--proto_path=' + meson.current_source_dir()/'src', '--cpp_out=@BUILD_DIR@', '@INPUT@']
-  )
 else
-  protoc_gen = generator(protoc,
-    output: ['@BASENAME@.pb.cc', '@BASENAME@.pb.h'],
-    arguments: ['@EXTRA_ARGS@', '--proto_path=' + meson.current_source_dir()/'src', '--cpp_out=@BUILD_DIR@', '@INPUT@']
-  )
+  protoc_native = protoc
 endif
+
+protoc_gen = generator(protoc_native,
+  output: ['@BASENAME@.pb.cc', '@BASENAME@.pb.h'],
+  arguments: ['@EXTRA_ARGS@', '--proto_path=' + meson.current_source_dir()/'src', '--cpp_out=@BUILD_DIR@', '@INPUT@']
+)
